@@ -1,17 +1,34 @@
 let initialState = {
   email: "",
-  userId: "",
+  userId: ""
 };
 
 function authenticationReducer(state = initialState, action) {
-
   switch (action.type) {
     case "SIGN_UP":
-      console.log(action.payload);
-      return {...state, email: action.payload.email, userId: action.payload.userId};
+      return {
+        ...state,
+        email: action.payload.email,
+        userId: action.payload.userId
+      };
     case "LOGIN":
-      console.log(action.payload);
-      return { ...state, email: action.payload.email, userId: action.payload.userId };
+      return {
+        ...state,
+        email: action.payload.email,
+        userId: action.payload.userId
+      };
+    case "LOGOUT":
+      return {
+        ...state,
+        email: "",
+        userId: ""
+      };
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        email: action.payload.email,
+        userId: action.payload.userId
+      };
     default:
       return state;
   }

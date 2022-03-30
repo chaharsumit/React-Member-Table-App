@@ -6,12 +6,56 @@ import Header from './Header';
 import { useEffect } from 'react';
 import { getToken } from '../utils/storage';
 import { userURL } from '../utils/constant';
+import { connect } from 'react-redux';
+import { setLoggedUser } from '../store/action';
 
 
-export default function App(){
+function App(props){
 
   useEffect(() => {
     if(getToken()){
+      setCurrentUser();
+    }
+  }, []);
+
+  function setCurrentUser(){
+    fetch(userURL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `${getToken()}`
+      },
+    }).then(res => res.json()).then(({user}) => props.dispatch(setLoggedUser(user)));
+  }
+
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+
+        <Route path='/login' element={<Login />} />
+
+        <Route path='/signup' element={<Signup />} />
+      </Routes>
+    </>
+  )
+}
+
+function mapStateToProps(state){
+  return {
+    currUser: state.authenticationReducer
+  }
+}
+
+export default connect(mapStateToProps)(App);
+
+
+/*
+
+useEffect(() => {
+    if(getToken()){
+      console.log('puta');
       async function setCurrentUser(){
         let currUser = await fetchCurrUser();
         console.log(currUser); 
@@ -30,16 +74,4 @@ export default function App(){
     }).then(res => res.json()).then(data => data);
   }
 
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-
-        <Route path='/login' element={<Login />} />
-
-        <Route path='/signup' element={<Signup />} />
-      </Routes>
-    </>
-  )
-}
+*/

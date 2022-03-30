@@ -37,3 +37,16 @@ export function clearInfo(){
     type: "CLEAR_INFO_FIELDS",
   }
 }
+
+export function setLoggedUser(data){
+  return {
+    type: "SET_CURRENT_USER",
+    payload: data
+  }
+}
+
+export function logout(){
+  return {
+    type: "LOGOUT"
+  }
+}
