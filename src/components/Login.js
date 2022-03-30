@@ -11,7 +11,7 @@ function Login(props) {
 
   useEffect(() => {
     clearUserInfo();
-  }, [])
+  }, []);
 
   function clearUserInfo(){
     props.dispatch(clearInfo());
