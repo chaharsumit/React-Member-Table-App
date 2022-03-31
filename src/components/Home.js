@@ -2,7 +2,8 @@ import Hero from './Hero';
 import Filter from './Filter';
 import Table from './Table';
 
-export default function Home() {
+function Home(props) {
+
   return (
     <div className="container">
       <Hero />
@@ -11,3 +12,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

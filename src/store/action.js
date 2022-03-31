@@ -50,3 +50,10 @@ export function logout(){
     type: "LOGOUT"
   }
 }
+
+export function fillMembers(data){
+  return {
+    type: "PUSH_ALL_MEMBERS_TO_STATE",
+    payload: data,
+  }
+}

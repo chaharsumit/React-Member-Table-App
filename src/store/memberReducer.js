@@ -1,24 +1,14 @@
-function todoReducer(state = { todos: [] }, action) {
-  console.log(state.todos, action);
-  switch (action.type) {
-    case "ADD_TODO":
-      return {...state, todos: state.todos.concat(action.todo)};
-    case "TOGGLE_TODO":
-      let todos = [...state.todos];
-      todos = todos.map(todo => {
-        if (todo.id === action.id) {
-          return { ...todo, isDone: !todo.isDone };
-        }
-        return todo;
-      })
-      return {...state, todos: todos};
-    case "DELETE_TODO":
-      return {...state, todos: [...state.todos.filter(item => item.id !== action.id)]};
-    case "CLEAR_TODOS":
-      return {...state, todos: [...state.todos.filter( item => !item.isDone )]};
+let initialState = {
+  members: []
+};
+
+function memberReducer(state = initialState, action) {
+  switch (action.type){
+    case "PUSH_ALL_MEMBERS_TO_STATE":
+      return { ...state, members: action.payload }
     default:
-    return state;
+      return state;
   }
 }
 
-export default todoReducer;
+export default memberReducer;

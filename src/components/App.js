@@ -5,9 +5,9 @@ import Signup from './Signup';
 import Header from './Header';
 import { useEffect } from 'react';
 import { getToken } from '../utils/storage';
-import { userURL } from '../utils/constant';
+import { userURL, membersURL } from '../utils/constant';
 import { connect } from 'react-redux';
-import { setLoggedUser } from '../store/action';
+import { setLoggedUser, fillMembers } from '../store/action';
 
 
 function App(props){
@@ -44,34 +44,8 @@ function App(props){
 
 function mapStateToProps(state){
   return {
-    currUser: state.authenticationReducer
+    currUser: state.authenticationReducer,
   }
 }
 
 export default connect(mapStateToProps)(App);
-
-
-/*
-
-useEffect(() => {
-    if(getToken()){
-      console.log('puta');
-      async function setCurrentUser(){
-        let currUser = await fetchCurrUser();
-        console.log(currUser); 
-      }
-      setCurrentUser();
-    }
-  }, []);
-
-  function fetchCurrUser(){
-    return fetch(userURL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `${getToken()}`
-      },
-    }).then(res => res.json()).then(data => data);
-  }
-
-*/

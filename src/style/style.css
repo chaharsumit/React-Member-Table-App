@@ -60,6 +60,7 @@ a{
   --black: #1b1919;
   --white: #ffffff;
   --grey: #f9fafb;
+  --darkgrey: #adadad;
 }
 
 .container{
@@ -231,4 +232,18 @@ a{
 
 td, th{
   padding: 1rem 0;
+}
+
+tbody tr:nth-child(2n){
+  background-color: var(--grey);
+}
+
+thead tr th:last-of-type{
+  padding: 0.5rem;
+  background-color: var(--darkgrey);
+}
+
+tbody tr:nth-child(2n) td:last-child{
+  background-color: var(--darkgrey);
+  padding: 0.5rem;
 }
