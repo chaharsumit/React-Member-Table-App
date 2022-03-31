@@ -3,6 +3,7 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import Header from './Header';
+import Modal from './Modal';
 import { useEffect } from 'react';
 import { getToken } from '../utils/storage';
 import { userURL, membersURL } from '../utils/constant';
@@ -31,6 +32,9 @@ function App(props){
   return (
     <>
       <Header />
+      {
+        props.modal.isOpen ? <Modal /> : ""
+      }
       <Routes>
         <Route path='/' element={<Home />} />
 
@@ -45,6 +49,7 @@ function App(props){
 function mapStateToProps(state){
   return {
     currUser: state.authenticationReducer,
+    modal: state.modalReducer
   }
 }
 

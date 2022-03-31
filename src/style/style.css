@@ -225,6 +225,29 @@ a{
   padding: 1rem 0;
 }
 
+.modal{
+  position: absolute;
+  background-color: rgba(100, 99, 99, 0.589);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  height: 100%;
+}
+
+.modal-form{
+  background-color: white;
+  width: 50%;
+}
+
+.modal-cross-btn{
+  padding: 1rem;
+  border-radius: 0.2rem;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  border: none;
+}
 
 .table{
   width: 100%;

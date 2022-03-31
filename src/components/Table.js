@@ -7,6 +7,7 @@ import { membersURL } from '../utils/constant';
 
 function Table(props) {
   let { members } = props.members;
+  let { companyFilter, statusFilter} = props.filter;
 
   useEffect(() => {
     getAllMembers();
@@ -21,8 +22,37 @@ function Table(props) {
     }).then(res => res.json()).then(({members}) => props.dispatch(fillMembers(members)));
   }
 
-  function deleteMember({ target }){
+  function filterMembers(){
+    let filteredMembers = [];
+    if(companyFilter.length === 0 && !statusFilter){
+      return members;
+    }else if(!statusFilter && companyFilter.length){
+      filteredMembers = members.reduce((acc, curr) => {
+        if(companyFilter.includes(curr.company)){
+          acc.push(curr);
+        }
+        return acc;
+      }, []);
+    }else if(statusFilter && !companyFilter.length){
+      filteredMembers = members.reduce((acc, curr) => {
+        if(curr.status === statusFilter){
+          acc.push(curr);
+        }
+        return acc;
+      }, []);
+    }else if(statusFilter && companyFilter.length){
+      filteredMembers = members.reduce((acc, curr) => {
+        if(curr.status === statusFilter && companyFilter.includes(curr.company)){
+          acc.push(curr);
+        }
+        return acc;
+      }, []);
+    }
+    return filteredMembers;
+  }
 
+
+  function deleteMember({ target }){
     let deleteURL = ROOT_URL + target.parentElement.id + '/delete';
     fetch(deleteURL, {
       method: "GET",
@@ -48,7 +78,7 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {members.map(member => (
+        {filterMembers().map(member => (
           <tr className="bg-light text-align-left" key={member.id} id={member.id}>
             <td>
               <input type="checkbox" />
@@ -70,6 +100,7 @@ function Table(props) {
 function mapStateToProps(state) {
   return {
     members: state.memberReducer,
+    filter: state.filterReducer,
   };
 }
 

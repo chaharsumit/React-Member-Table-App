@@ -57,3 +57,88 @@ export function fillMembers(data){
     payload: data,
   }
 }
+
+export function filterCompany(id, companies){
+  return {
+    type: "HANDLE_COMPANY_FILTER",
+    payload: {
+      id: id,
+      companies: companies
+    }
+  }
+}
+
+export function removeFromCompanyFilter(id){
+  return {
+    type: "REMOVE_FILTER_FROM_COMPANY_FILTER",
+    payload: {
+      id: id,
+    }
+  }
+}
+
+export function removeFromStatusFilter(id){
+  return {
+    type: "REMOVE_FILTER_FROM_STATUS_FILTER",
+    payload: id
+  }
+}
+
+export function filterStatus(id){
+  return {
+    type: "ADD_FILTER_TO_STATUS_FILTER",
+    payload: id 
+  }
+}
+
+export function toggleStatus(){
+  return {
+    type: "TOGGLE_STATUS_DROPDOWN_DISPLAY"
+  }
+}
+
+export function toggleCompany(){
+  return {
+    type: "TOGGLE_COMPANY_DROPDOWN_DISPLAY"
+  }
+}
+
+export function toggleModal(){
+  return {
+    type: "TOGGLE"
+  }
+}
+
+export function nameChange(value){
+  return {
+    type: "ON_NAME_INPUT_CHANGE",
+    payload: value
+  }
+}
+
+export function companyChange(value){
+  return {
+    type: "ON_COMPANY_INPUT_CHANGE",
+    payload: value
+  }
+}
+
+export function notesChange(value){
+  return {
+    type: "ON_NOTES_INPUT_CHANGE",
+    payload: value
+  }
+}
+
+export function statusChange(value){
+  return {
+    type: "ON_STATUS_INPUT_CHANGE",
+    payload: value
+  }
+}
+
+export function clearModalData(){
+  return {
+    type: "CLEAR_MODAL_DATA"
+  }
+}
