@@ -19,7 +19,7 @@ function Table(props) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(res => res.json()).then(({members}) => props.dispatch(fillMembers(members)));
+    }).then(res => res.json()).then(({members}) => props.dispatch(fillMembers(members))).catch(err => alert(err));
   }
 
   function filterMembers(){
@@ -60,7 +60,7 @@ function Table(props) {
         "Content-Type": "application/json",
         "Authorization": `${getToken()}`
       },
-    }).then((res) => res.json()).then(() => getAllMembers());
+    }).then((res) => res.json()).then(() => getAllMembers()).catch(err => alert(err));
   }
 
   return (

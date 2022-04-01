@@ -30,7 +30,7 @@ function Signup(props) {
           password
         }
       })
-    }).then(res => res.json()).then(data => data);
+    }).then(res => res.json()).then(data => data).catch(err => alert(err));
   }
 
   async function handleSubmit(event){

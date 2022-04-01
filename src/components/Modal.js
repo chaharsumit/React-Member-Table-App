@@ -17,7 +17,7 @@ function Modal(props) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(res => res.json()).then(({members}) => props.dispatch(fillMembers(members)));
+    }).then(res => res.json()).then(({members}) => props.dispatch(fillMembers(members))).catch(err => alert(err));
   }
 
   function addNewMember(event) {
@@ -40,7 +40,7 @@ function Modal(props) {
       props.dispatch(toggleModal());
       props.dispatch(clearModalData());
       getAllMembers();
-    })
+    }).catch(err => alert(err));
   }
 
   function handleChange({ target }) {

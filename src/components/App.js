@@ -26,7 +26,7 @@ function App(props){
         "Content-Type": "application/json",
         "Authorization": `${getToken()}`
       },
-    }).then(res => res.json()).then(({user}) => props.dispatch(setLoggedUser(user)));
+    }).then(res => res.json()).then(({user}) => props.dispatch(setLoggedUser(user))).catch(err => alert(err));
   }
 
   return (
