@@ -1,6 +1,43 @@
-# Getting Started with Create React App
+# Getting Started with React Members App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# About The App
+
+This app has been created using ReactJs and it uses an ExpressJs api for fetching the data.
+- This app makes use of Redux for state management.
+- React functional components and hooks are used.
+- React Router-v6 has been used for routing.
+- The Github Link to the Express Api is [Members Api](https://github.com/chaharsumit/Members-Api). You can find the endpoints in the readme file.
+- The API has been deployed on Heroku at [https://thawing-oasis-92301.herokuapp.com/](https://thawing-oasis-92301.herokuapp.com).
+- Mongo atlas is the Database used for storing members data.
+- This app also supports auto login on hard reload.
+
+# Authentication Flow
+
+The Members app uses Fetch API for making request to our api. 
+- On Login or Registration the jwt token is supplied in the response object from the backend api and is stored in local storage.
+- User is logged in automatically after registration.
+- JWT token returned in the response object is stored in local storage for persiting user login in case of hard reload.
+- On hard reload Fetch request is made to get the current user from the api based on verification of the jwt token sent in the request header.
+
+# App Images
+
+**Home Page(user not logged in)**
+
+<img src="/public/unauthenticated.png" width="100%" height="400" alt="home page when user not logged in">
+
+**Home Page(user is logged in)**
+
+<img src="/public/authenticated.png" width="100%" height="400" alt="home page when user is logged in">
+
+**Login page**
+
+<img src="/public/login.png" width="100%" height="400" alt="Login page">
+
+**Add Member Modal**
+
+<img src="/public/modal.png" width="100%" height="400" alt="modal-image">
 
 ## Available Scripts
 
