@@ -10,14 +10,17 @@ function Hero(props){
   return (
     <div className="flex col-gap-1 mt-2 mb-2">
       <h1 className="text-lg text-dark bold">Team Members</h1>
-      <button className="btn btn-hero text-light" onClick={handleModal}>Add Members +</button>
+      {
+        props.currUser.email ? <button className="btn btn-hero text-light" onClick={handleModal}>Add Members +</button> : ""
+      }
     </div>
   )
 }
 
 function mapStateToProps(state){
   return {
-    modal: state.modalReducer
+    modal: state.modalReducer,
+    currUser: state.authenticationReducer
   }
 }
 

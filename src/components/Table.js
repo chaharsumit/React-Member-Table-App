@@ -88,7 +88,9 @@ function Table(props) {
             <td>{member.status}</td>
             <td>{member.lastUpdated}</td>
             <td>{member.notes}</td>
-            <td onClick={deleteMember}>🗑</td>
+            {
+              props.user.email ? <td onClick={deleteMember} className="pointer">🗑</td> : <td> </td>
+            }
             <td></td>
           </tr>
         ))}
@@ -101,6 +103,7 @@ function mapStateToProps(state) {
   return {
     members: state.memberReducer,
     filter: state.filterReducer,
+    user: state.authenticationReducer
   };
 }
 

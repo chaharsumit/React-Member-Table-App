@@ -220,6 +220,13 @@ a{
 
 /* form styles */
 
+.pos-relative{
+  position: relative;
+}
+
+.pos-absolute{
+  position: absolute;
+}
 
 .header{
   padding: 1rem 0;
@@ -251,6 +258,28 @@ a{
 
 .table{
   width: 100%;
+}
+
+.company-dropdown{
+  top: 20%;
+  left: 16.5%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--dark);
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.status-dropdown{
+  top: 20%;
+  left: 25.5%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--dark);
 }
 
 td, th{
